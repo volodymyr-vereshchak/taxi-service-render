@@ -119,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '../'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -150,3 +150,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+

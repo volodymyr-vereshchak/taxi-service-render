@@ -17,5 +17,5 @@ python manage.py runserver
 
 ## Links
 - Project homepage: https://taxi-servise-1985.herokuapp.com/
-- username: admin
-- password: admin1985
+- Login: `admin.user`
+- Password: `1qazcde3`
