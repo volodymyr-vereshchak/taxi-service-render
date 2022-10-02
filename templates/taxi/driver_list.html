@@ -20,7 +20,7 @@
             <div class="thumbnail">
               <figure><a href="{{ driver.get_absolute_url }}"><img src="{{ driver.picture_url }}" alt=""></a></figure>
               <div class="caption">
-                  <a href="{{ driver.get_absolute_url }}">{{ driver.username }} {% if user == driver %} (Me){% endif %}</a>
+                  <a href="{{ driver.get_absolute_url }}">{{ driver.first_name }} {{ driver.last_name }} {% if user == driver %} (Me){% endif %}</a>
               </div>
             </div>
           </div>
