@@ -17,5 +17,5 @@ python manage.py runserver
 
 ## Links
 - Project homepage: https://taxi-servise-1985.herokuapp.com/
-- Login: `max_verstappen`
-- Password: `max011985`
+- Login: `mick_schumacher`
+- Password: `1qazcde3`
