@@ -1,7 +1,7 @@
-{% load crispy_forms_filters %}
-<form action="" method="get" novalidate>
-  {{ search_form|crispy }}
-  <button>Search</button>
-</form>
-
+<div class="align-center">
+  <form action="" method="get" novalidate>
+    {{ search_form.as_table }}
+    <button class="btn btn-default">Search</button>
+  </form>
+</div>
 

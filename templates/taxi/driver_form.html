@@ -1,12 +1,16 @@
 {% extends "base.html" %}
-{% load crispy_forms_filters %}
+{#{% load crispy_forms_filters %}#}
 
 {% block content %}
-  <h1>Create driver</h1>
-  <form action="" method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
+  <h1 class="align-center"  >Create driver</h1>
+  <div class="align-center">
+    <div></div>
+    <form action="" method="post" novalidate>
+      {% csrf_token %}
+      {{ form.as_table }}
+      <div></div>
 
-    <input type="submit" value="Submit" class="btn btn-primary">
-  </form>
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
 {% endblock %}

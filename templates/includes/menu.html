@@ -1,0 +1,39 @@
+{% load static %}
+<article class="down-box">
+  <div class="container">
+    <h1 class="brand"><a href="{% url 'taxi:index' %}"><img src="{% static 'img/logo.png' %}" alt=""></a></h1>
+    <div id="menu">
+      <div class="navbar navbar_ clearfix">
+        <div class="navbar-inner">
+          <div class="clearfix">
+            <div class="nav-collapse nav-collapse_ collapse">
+              <ul class="nav sf-menu clearfix">
+                  <li
+                      {% if request.path == "/" %}
+                      class="active"
+                      {% endif %}
+                  ><a href="{% url 'taxi:index' %}">home</a></li>
+                  <li
+                      {% if request.path == "/drivers/" %}
+                      class="active"
+                      {% endif %}
+                  ><a href="{% url 'taxi:driver-list' %}">drivers</a></li>
+                  <li
+                      {% if request.path == "/cars/" %}
+                      class="active"
+                      {% endif %}
+                  ><a href="{% url 'taxi:car-list' %}">cars</a></li>
+                  <li
+                      {% if request.path == "/manufacturers/" %}
+                      class="active"
+                      {% endif %}
+                  ><a href="{% url 'taxi:manufacturer-list' %}">manufacturers</a></li>
+
+              </ul>
+            </div>
+          </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</article>

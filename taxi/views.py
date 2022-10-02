@@ -92,7 +92,7 @@ class ManufacturerDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class CarListView(LoginRequiredMixin, SearchMixin, generic.ListView):
     model = Car
-    paginate_by = 5
+    paginate_by = 6
     queryset = Car.objects.all().select_related("manufacturer")
 
 
@@ -119,7 +119,7 @@ class CarDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class DriverListView(LoginRequiredMixin, SearchMixin, generic.ListView):
     model = Driver
-    paginate_by = 5
+    paginate_by = 6
 
 
 class DriverDetailView(LoginRequiredMixin, generic.DetailView):

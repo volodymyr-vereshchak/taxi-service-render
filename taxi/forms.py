@@ -21,6 +21,7 @@ class DriverCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Driver
         fields = UserCreationForm.Meta.fields + (
+            "picture_url",
             "license_number",
             "first_name",
             "last_name",
