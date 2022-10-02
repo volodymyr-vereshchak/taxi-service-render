@@ -987,9 +987,9 @@ header.border-chess .down-box {
 	-moz-border-radius: 42px;
 	border-radius: 42px;
 }
-#toTop:hover {
-	background: url(../img/top.png) 0 bottom no-repeat;
-}
+/*#toTop:hover {*/
+/*	background: url(../img/top.png) 0 bottom no-repeat;*/
+/*}*/
 .mail {
 	font: 14px Times New Roman, Arial, Helvetica, sans-serif;
 	line-height: 20px;
