@@ -49,7 +49,7 @@
               <div class="container">
                   <p class="tel"><span>phone:</span>+1 800 559 6580</p>
                   {% if user.is_authenticated %}
-                    <p class="log-in"><a href="{% url 'logout' %}?next={{request.path}}">logout</a><img src="{% static 'img/up_icon.png' %}" alt=""></p>
+                    <p class="log-in"><a href="{% url 'logout' %}?next={{request.path}}">{{ user.username }} logout</a><img src="{% static 'img/up_icon.png' %}" alt=""></p>
                   {% else %}
                     <p class="log-in"><a href="{% url 'login' %}?next={{request.path}}">login</a><img src="{% static 'img/up_icon.png' %}" alt=""></p>
                   {% endif %}
@@ -71,7 +71,9 @@
                 <div class="row">
                     <article class="span12 footer-menu">
                       <p>Taxi Service &copy; 2022</p>
+                      {% if request.path == "/" %}
                       <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
+                      {% endif %}
                       <p><a href="#">facebook</a> &bull; <a href="#">twitter</a></p>
                     </article>
                 </div>
