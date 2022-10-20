@@ -2,9 +2,9 @@
 
 Deploying taxi service project on Heroku
 
-## Installing / Getting started
-
 ![img.png](img.png)
+
+## Installing / Getting started
 
 A quick introduction of the minimal setup you need
 
