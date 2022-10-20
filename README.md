@@ -6,11 +6,13 @@ Deploying taxi service project on Heroku
 
 A quick introduction of the minimal setup you need 
 
+![img.png](img.png)
+
 ```shell
 git clone https://github.com/volodymyr-vereshchak/taxi-service-heroku.git
 cd taxi-service-heroku
 python -m venv venv
-./venv/Scripts/activate
+venv\Scripts\activate
 pip install -r requirements.txt
 python manage.py runserver
 ```
