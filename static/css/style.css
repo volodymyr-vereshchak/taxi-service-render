@@ -77,6 +77,11 @@ table {
     text-transform: uppercase;
 }
 
+.text-black {
+    color: black;
+    text-transform: uppercase;
+}
+
 .text-center {
     text-align: center;
 }
@@ -141,6 +146,14 @@ table {
 
 .main {
     min-height: calc(100vh - 283px);
+}
+
+.main-create {
+    min-height: calc(100vh - 320px);
+}
+
+.main-create input {
+    width: 300px;
 }
 
 .main img {
@@ -251,4 +264,14 @@ table {
 
 .detail-size {
     min-height: calc(100vh - 286px);
+}
+
+.errorlist {
+    color: red;
+}
+
+#id_drivers {
+    width: fit-content;
+    text-align: left;
+    margin: 0 auto;
 }

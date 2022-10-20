@@ -1,15 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1 class="align-center"  >Create driver</h1>
-  <div class="align-center">
-    <div></div>
-    <form action="" method="post" enctype="multipart/form-data" novalidate>
-      {% csrf_token %}
-      {{ form.as_table }}
-      <div></div>
-
-      <input type="submit" value="Submit" class="btn btn-primary">
-    </form>
-</div>
+  <h1 class="text text-center mrg-10">Create driver</h1>
+  <hr>
+    <div class="main-create text text-center">
+      <form action="" method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="mrg-10">
+          {{ field.errors }} <br>
+          {{ field.label_tag }} <br> {{ field  }} <br>
+          <div class="text-black">{{ field.help_text }}</div> <br>
+          <hr>
+        </div>
+        {% endfor %}
+        <input type="submit" value="Submit" class="text-black mrg-10">
+      </form>
+    </div>
 {% endblock %}
