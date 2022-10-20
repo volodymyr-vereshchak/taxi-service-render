@@ -82,6 +82,11 @@ table {
     text-transform: uppercase;
 }
 
+.text-red {
+    color: red;
+    text-transform: uppercase;
+}
+
 .text-center {
     text-align: center;
 }
