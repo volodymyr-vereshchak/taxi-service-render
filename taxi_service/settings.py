@@ -120,7 +120,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = "taxi.Driver"
 
-LOGIN_REDIRECT_URL = '../'
+LOGIN_REDIRECT_URL = '../../'
 LOGOUT_REDIRECT_URL = '../'
 
 # Internationalization
