@@ -3,7 +3,7 @@
 {% block content %}
   <h1 class="align-center">{{ object|yesno:"Update,Create" }} manufacturer</h1>
   <div class="align-center">
-    <form action="" method="post" novalidate>
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
       {{ form.as_table }}
       <div></div>

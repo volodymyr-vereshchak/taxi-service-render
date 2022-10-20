@@ -1,18 +1,12 @@
 {% load search_query %}
 {% if is_paginated %}
-<footer>
-  <div class="container">
-    <div class="row">
-      <article class="span12 footer-menu">
-        {% if page_obj.has_previous %}
-          <p><a href="?{% search_transform request page=page_obj.previous_page_number %}" class="page-link">prev</a></p>
-        {% endif %}
-        <p>{{ page_obj.number }} of {{ paginator.num_pages }}</p>
-        {% if page_obj.has_next %}
-          <p><a href="?{% search_transform request page=page_obj.next_page_number %}" class="page-link">next</a></p>
-        {% endif %}
-      </article>
-    </div>
+  <div class="pagination">
+    {% if page_obj.has_previous %}
+      <p><a href="?{% search_transform request page=page_obj.previous_page_number %}" class="menu__link text">previous</a></p>
+    {% endif %}
+    <p class="menu__link text">{{ page_obj.number }} of {{ paginator.num_pages }}</p>
+    {% if page_obj.has_next %}
+      <p><a href="?{% search_transform request page=page_obj.next_page_number %}" class="menu__link text">next</a></p>
+   {% endif %}
   </div>
-</footer>
 {% endif %}

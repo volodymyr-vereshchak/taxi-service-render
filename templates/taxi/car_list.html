@@ -2,33 +2,21 @@
 {% load static %}
 
 {% block content %}
-    {% include "includes/search.html" %}
-{% if car_list %}
-<div class="container padBot">
-  <div class="row">
-    <article class="span12 box-thumb">
-      <h2><em>our<br>
-        <span>cars</span>
-        <a href="{% url 'taxi:car-create' %}" class="btn btn-primary pull-right">
-          Create
-        </a>
-      </em></h2>
-      <div class="row">
-        {% for car in car_list %}
-          <div class="span4 thumb-pad4">
-            <div class="thumbnail">
-              <figure><a href="{% url "taxi:car-detail" pk=car.id %}"><img src="{{ car.picture_url }}" alt=""></a></figure>
-              <div class="caption">
-                  <a href="{% url "taxi:car-detail" pk=car.id %}">{{ car.model }}</a>
-              </div>
+  {% include 'includes/search.html' %}
+  <div class="div-70 text text-center">
+    <a href="{% url 'taxi:car-create' %}" class="text-right link-button">Create</a>
+  </div>
+  {% if car_list %}
+    <div class="main main-lists">
+      {% for car in car_list %}
+        <div class="img-list">
+              <a href="{% url "taxi:car-detail" pk=car.id %}"><img src="{{ MEDIA_URL }}{{ car.picture_url }}" alt=""></a>
+              <p class="text-center"><a href="{% url "taxi:car-detail" pk=car.id %}" class="text menu__link">{{ car.model }}</a></p>
             </div>
-          </div>
-        {% endfor %}
-      </div>
-     </article>
-   </div>
-</div>
-    {% else %}
-      <p>There are no cars in taxi.</p>
-    {% endif %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>There are no cars in the service.</p>
+  {% endif %}
+  {% include 'includes/pagination.html' %}
 {% endblock %}

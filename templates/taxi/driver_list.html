@@ -2,34 +2,21 @@
 {% load static %}
 
 {% block content %}
-    {% include "includes/search.html" %}
-
-    {% if driver_list %}
-<div class="container padBot">
-  <div class="row">
-    <article class="span12 box-thumb">
-      <h2><em>our<br>
-        <span>drivers</span>
-        <a href="{% url 'taxi:driver-create' %}" class="btn btn-primary pull-right">
-          Create
-        </a>
-      </em></h2>
-      <div class="row">
-        {% for driver in driver_list %}
-          <div class="span4 thumb-pad4">
-            <div class="thumbnail">
-              <figure><a href="{{ driver.get_absolute_url }}"><img src="{{ driver.picture_url }}" alt=""></a></figure>
-              <div class="caption">
-                  <a href="{{ driver.get_absolute_url }}">{{ driver.first_name }} {{ driver.last_name }} {% if user == driver %} (Me){% endif %}</a>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-     </article>
-   </div>
-</div>
-    {% else %}
-      <p>There are no drivers in the service.</p>
-    {% endif %}
+  {% include 'includes/search.html' %}
+  <div class="div-70 text text-center">
+    <a href="{% url 'taxi:driver-create' %}" class="text-right link-button">Create</a>
+  </div>
+  {% if driver_list %}
+    <div class="main-lists">
+      {% for driver in driver_list %}
+        <div class="img-list">
+          <a href="{{ driver.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ driver.picture_url }}" alt=""></a>
+          <p class="text-center"><a href="{{ driver.get_absolute_url }}" class="text menu__link">{{ driver.first_name }} {{ driver.last_name }} {% if user == driver %} (Me){% endif %}</a></p>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>There are no drivers in the service.</p>
+  {% endif %}
+  {% include 'includes/pagination.html' %}
 {% endblock %}

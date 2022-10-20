@@ -1,97 +1,45 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Main</title>
-<meta charset="utf-8">
-{% load static %}
-<link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
-<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon" />
-<meta name="description" content="Your description">
-<meta name="keywords" content="Your keywords">
-<meta name="author" content="Your name">
-<meta name = "format-detection" content = "telephone=no" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<!--CSS-->
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-<link rel="stylesheet" href="{% static 'css/responsive.css' %}">
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-<link rel="stylesheet" href="{% static 'css/camera.css' %}">
-<!--JS-->
-<script src="{% static 'js/jquery.js' %}"></script>
-<script src="{% static 'js/jquery-migrate-1.1.1.js' %}"></script>
-<script src="{% static 'js/superfish.js' %}"></script>
-<script src="{% static 'js/jquery.mobilemenu.js' %}"></script>
-<script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
-<script src="{% static 'js/jquery.ui.totop.js' %}"></script>
-<script src="{% static 'js/camera.js' %}"></script>
-<script>
-    $(document).ready(function(){
-        jQuery('.camera_wrap').camera();
-    });
-</script>
-<!--[if (gt IE 9)|!(IE)]><!-->
-    <script src="{% static 'js/jquery.mobile.customized.min.js' %}"></script>
-<!--<![endif]-->
-<!--[if lt IE 8]>
-		<div style='text-align:center'><a href="http://www.microsoft.com/windows/internet-explorer/default.aspx?ocid=ie6_countdown_bannercode"><img src="http://www.theie6countdown.com/img/upgrade.jpg"border="0"alt=""/></a></div>
-<![endif]-->
-<!--[if lt IE 9]>
-  <link rel="stylesheet" href="{% static 'css/ie.css' %}">
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-</head>
-  <body>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Taxi service</title>
+  </head>
+  <body class="body-class">
     <div class="global">
-      <!--header-->
       {% block header %}
       <header>
-          <article class="up-box">
-              <div class="container">
-                  <p class="tel"><span>phone:</span>+1 800 559 6580</p>
-                  {% if user.is_authenticated %}
-                    <p class="log-in"><a href="{% url 'logout' %}?next={{request.path}}">{{ user.username }} logout</a><img src="{% static 'img/up_icon.png' %}" alt=""></p>
-                  {% else %}
-                    <p class="log-in"><a href="{% url 'login' %}?next={{request.path}}">login</a><img src="{% static 'img/up_icon.png' %}" alt=""></p>
-                  {% endif %}
-              </div>
-              <em></em>
-          </article>
-            {% include "includes/menu.html" %}
-      </header>
-      {% endblock header %}
-      <!--content-->
-      {% block content %}
-
-      {% endblock content %}
-      <!--footer-->
-      {% block footer %}
-      {% include "includes/pagination.html" %}
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <article class="span12 footer-menu">
-                      <p>Taxi Service &copy; 2022</p>
-                      {% if request.path == "/" %}
-                      <p>You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}</p>
-                      {% endif %}
-                      <p><a href="#">facebook</a> &bull; <a href="#">twitter</a></p>
-                    </article>
-                </div>
-                <!-- FOOTER_LINK -->
+          <div class="login text">
+            <div class="div-70">
+              <p class="text-left">phone: 0-800-300-000</p>
+              {% if user.is_authenticated %}
+                <p class="text-right"><a href="{% url "taxi:driver-detail" pk=user.id %}">{{ user.username }}</a> &bull; <a href="{% url 'logout' %}?next={{request.path}}">logout</a> {% if request.path == "/" %}&bull; (visited: {{ num_visits }} time{{ num_visits|pluralize }}) {% endif %}</p>
+              {% else %}
+                <p class="text-right"><a href="{% url 'login' %}?next={{request.path}}">login</a></p>
+              {% endif %}
             </div>
-            <em></em>
-        </footer>
-      {% endblock footer %}
-      <script src="{% static 'js/bootstrap.js' %}"></script>
-      <script>
-          $('.list1 li').hover(function(){
-              $(this).stop().css({'background':'#f5c34c'});
-              $(this).stop().find('a').css({'color':'#fff'});
-                  }, function(){
-              $(this).stop().css({'background':'transparent'});
-              $(this).stop().find('a').css({'color':'#f5c34c'});
-          })
-      </script>
+          </div>
+        {% include 'includes/menu.html' %}
+        </header>
+      {% endblock %}
+      <main>
+        {% block content %}
+        {% endblock %}
+      </main>
+      <footer>
+        {% block footer %}
+          <div class="footer text">
+            <div><img src="{% static 'img/taxi-chek.png' %}" alt=""></div>
+            <div class="div-70">
+              <p class="text-left">Taxi Service &copy; 2022</p>
+              <p class="text-right"><a href="#">facebook</a> &bull; <a href="#">twitter</a></p>
+            </div>
+          </div>
+        {% endblock %}
+      </footer>
     </div>
   </body>
 </html>

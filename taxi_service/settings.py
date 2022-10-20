@@ -75,6 +75,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media"
             ],
         },
     },
@@ -120,6 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = "taxi.Driver"
 
 LOGIN_REDIRECT_URL = '../'
+LOGOUT_REDIRECT_URL = '../'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -141,6 +143,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (BASE_DIR / "static",)
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

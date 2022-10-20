@@ -11,7 +11,6 @@ from .models import Driver, Car, Manufacturer
 from .forms import DriverCreationForm, DriverLicenseUpdateForm, CarForm, SearchForm
 
 
-@login_required
 def index(request):
     """View function for the home page of the site."""
 
@@ -70,7 +69,7 @@ class ManufacturerListView(LoginRequiredMixin, SearchMixin, generic.ListView):
     model = Manufacturer
     context_object_name = "manufacturer_list"
     template_name = "taxi/manufacturer_list.html"
-    paginate_by = 5
+    paginate_by = 6
 
 
 class ManufacturerCreateView(LoginRequiredMixin, generic.CreateView):
@@ -131,6 +130,9 @@ class DriverCreateView(LoginRequiredMixin, generic.CreateView):
     model = Driver
     form_class = DriverCreationForm
 
+    def form_valid(self, form):
+        pass
+
 
 class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Driver
@@ -140,7 +142,7 @@ class DriverLicenseUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class DriverDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Driver
-    success_url = reverse_lazy("")
+    success_url = reverse_lazy("taxi:driver-list")
 
 
 @login_required

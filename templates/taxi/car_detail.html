@@ -1,35 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    {{ car.model }}
-    <a href="{% url 'taxi:car-delete' pk=car.id %}" class="btn btn-danger pull-right">
-      Delete
-    </a>
-
-    <a href="{% url 'taxi:car-update' pk=car.id %}" class="btn btn-secondary pull-right">
-      Update
-    </a>
-  </h1>
-  <p>Manufacturer: ({{ car.manufacturer.name }}, {{ car.manufacturer.country }})</p>
-  <h1>
-    Drivers
-
-    {% if car in user.cars.all %}
-      <a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="btn btn-danger pull-right">
-        Delete me from this car
-      </a>
-    {% else %}
-      <a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="btn btn-success pull-right">
-        Assign me from this car
-      </a>
-    {% endif %}
-
-  </h1>
-  <hr>
-  <ul>
+  <div class="detail-size">
+    <div class="main-detail">
+      <div class="img-list">
+        <a href=""><img src="{{ MEDIA_URL }}{{ car.picture_url }}" alt=""></a>
+      </div>
+      <div class="mrg-10">
+        <p class="text text-center mrg-10">Model: {{ car.model }}</p>
+        <p class="text text-center mrg-10">Manufacturer: {{ car.manufacturer }}</p>
+        <p class="text text-center mrg-10">id: {{ car.id }}</p>
+      </div>
+      <div class="mrg-10">
+        <div class="mrg-10 text-center"><a href="{% url 'taxi:car-update' pk=car.id %}" class="link-update text">update</a></div>
+        <div class="mrg-10 text-center"><a href="{% url 'taxi:car-delete' pk=car.id %}" class="link-delete text">delete</a></div>
+        {% if car in user.cars.all %}
+          <div class="mrg-10 text-center"><a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="link-update text">delete me form this car</a></div>
+        {% else %}
+          <div class="mrg-10 text-center"><a href="{% url 'taxi:toggle-car-assign' pk=car.id %}" class="link-update text">assign me to this car</a></div>
+        {% endif %}
+      </div>
+    </div>
+    <p class="text text-center mrg-10">drivers</p>
+    <hr>
     {% for driver in car.drivers.all %}
-      <li>{{ driver.username }} ({{ driver.first_name }} {{ driver.last_name }})</li>
+      <div class="main-detail">
+        <div class="img-list">
+          <a href="{{ driver.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ driver.picture_url }}" alt=""></a>
+        </div>
+        <div class="mrg-10">
+          <p class="text text-center mrg-10">Username: {{ driver.username }}</p>
+          <p class="text text-center mrg-10">First name: {{ driver.first_name }}</p>
+          <p class="text text-center mrg-10">Last name: {{ driver.last_name }}</p>
+          <p class="text text-center mrg-10">License number: {{ driver.license_number }}</p>
+          <p class="text text-center mrg-10">Is staff: {{ driver.is_staff }}</p>
+        </div>
+      </div>
+      <hr>
     {% endfor %}
-  </ul>
+  </div>
 {% endblock %}

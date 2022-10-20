@@ -1,11 +1,10 @@
 {% extends "base.html" %}
-{#{% load crispy_forms_filters %}#}
 
 {% block content %}
   <h1 class="align-center"  >Create driver</h1>
   <div class="align-center">
     <div></div>
-    <form action="" method="post" novalidate>
+    <form action="" method="post" enctype="multipart/form-data" novalidate>
       {% csrf_token %}
       {{ form.as_table }}
       <div></div>

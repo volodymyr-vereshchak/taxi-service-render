@@ -1,34 +1,37 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1>
-    Username: {{ driver.username }}
-    <a href="{% url 'taxi:driver-delete' pk=driver.id %}" class="btn btn-danger pull-right">
-      Delete
-    </a>
-
-    <a href="{% url 'taxi:driver-update' pk=driver.id %}" class="btn btn-secondary pull-right">
-      Update license number
-    </a>
-  </h1>
-
-  <p class="align-center"><strong>First name:</strong> {{ driver.first_name }}</p>
-  <p class="align-center"><strong>Last name:</strong> {{ driver.last_name }}</p>
-  <p class="align-center"><strong>License number:</strong> {{ driver.license_number }}</p>
-  <p class="align-center"><strong>Is staff:</strong> {{ driver.is_staff }}</p>
-
-  <div class="ml-3">
-    <h4 class="align-center">Cars</h4>
-
+  <div class="detail-size">
+    <div class="main-detail">
+      <div class="img-list">
+        <a href=""><img src="{{ MEDIA_URL }}{{ driver.picture_url }}" alt=""></a>
+      </div>
+      <div class="mrg-10">
+        <p class="text text-center mrg-10">Username: {{ driver.username }}</p>
+        <p class="text text-center mrg-10">First name: {{ driver.first_name }}</p>
+        <p class="text text-center mrg-10">Last name: {{ driver.last_name }}</p>
+        <p class="text text-center mrg-10">License number: {{ driver.license_number }}</p>
+        <p class="text text-center mrg-10">Is staff: {{ driver.is_staff }}</p>
+      </div>
+      <div class="mrg-10">
+        <div class="mrg-10 text-center"><a href="{% url 'taxi:driver-update' pk=driver.id %}" class="link-update text">update license number</a></div>
+        <div class="mrg-10 text-center"><a href="{% url 'taxi:driver-delete' pk=driver.id %}" class="link-delete text">delete</a></div>
+      </div>
+    </div>
+    <p class="text text-center mrg-10">cars</p>
+    <hr>
     {% for car in driver.cars.all %}
-        <hr>
-
-        <p class="align-center"><strong>Model:</strong> {{ car.model }}</p>
-        <p class="align-center"><strong>Manufacturer:</strong> {{ car.manufacturer.name }}</p>
-        <p class="text-muted align-center"><strong>Id:</strong> {{car.id}}</p>
-
-    {% empty %}
-      <p>No cars!</p>
+      <div class="main-detail">
+        <div class="img-list">
+          <a href="{% url "taxi:car-detail" pk=car.id %}"><img src="{{ MEDIA_URL }}{{ car.picture_url }}" alt=""></a>
+        </div>
+        <div class="mrg-10">
+          <p class="text text-center mrg-10">Model: {{ car.model }}</p>
+          <p class="text text-center mrg-10">Manufacturer: {{ car.manufacturer.name }}</p>
+          <p class="text text-center mrg-10">id: {{car.id}}</p>
+        </div>
+      </div>
+      <hr>
     {% endfor %}
   </div>
 {% endblock %}

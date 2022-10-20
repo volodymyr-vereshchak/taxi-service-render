@@ -1,11 +1,31 @@
+import os
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.urls import reverse
+from django.utils.text import slugify
+
+
+def image_file_path(instance, filename):
+    _, extension = os.path.splitext(filename)
+    if isinstance(instance, Driver):
+        filename = f"{slugify(instance.username)}-{uuid.uuid4()}{extension}"
+        return os.path.join("img/drivers/", filename)
+
+    if isinstance(instance, Car):
+        filename = f"{slugify(instance.model)}-{uuid.uuid4()}{extension}"
+        return os.path.join("img/cars/", filename)
+
+    if isinstance(instance, Manufacturer):
+        filename = f"{slugify(instance.name)}-{uuid.uuid4()}{extension}"
+        return os.path.join("img/manufacturers/", filename)
 
 
 class Manufacturer(models.Model):
     name = models.CharField(max_length=255, unique=True)
     country = models.CharField(max_length=255)
+    picture_url = models.ImageField(upload_to=image_file_path, null=True)
 
     class Meta:
         ordering = ["name"]
@@ -16,7 +36,7 @@ class Manufacturer(models.Model):
 
 class Driver(AbstractUser):
     license_number = models.CharField(max_length=255, unique=True)
-    picture_url = models.TextField(null=True, blank=True)
+    picture_url = models.ImageField(upload_to=image_file_path, null=True)
 
     class Meta:
         verbose_name = "driver"
@@ -33,7 +53,7 @@ class Car(models.Model):
     model = models.CharField(max_length=255)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
     drivers = models.ManyToManyField(Driver, related_name="cars")
-    picture_url = models.TextField(null=True, blank=True)
+    picture_url = models.ImageField(upload_to=image_file_path, null=True)
 
     def __str__(self):
         return self.model

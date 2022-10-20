@@ -1,13 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-  <article class="slider">
-    <div class="camera_wrap">
-      {% load static %}
-      <div data-src="{% static 'img/picture1.jpg' %}"><div class="camera-caption">Counts of cars in service: {{ num_cars }}</div></div>
-      <div data-src="{% static 'img/picture2.jpg' %}"><div class="camera-caption">Counts of our drivers: {{ num_drivers }}</div></div>
-      <div data-src="{% static 'img/picture3.jpg' %}"><div class="camera-caption">Counts of manufacturers of our car: {{ num_manufacturers }}</div></div>
-    </div>
-    <em></em>
-  </article>
+  <div class="main">
+    <img src="{% static 'img/picture1.jpg' %}" alt="">
+    <div class="image-text">Drivers: {{ num_drivers }} &bull; Cars: {{ num_cars }} &bull; Manufacturers: {{ num_manufacturers }}</div>
+  </div>
 {% endblock content%}
