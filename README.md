@@ -4,9 +4,9 @@ Deploying taxi service project on Heroku
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need 
-
 ![img.png](img.png)
+
+A quick introduction of the minimal setup you need
 
 ```shell
 git clone https://github.com/volodymyr-vereshchak/taxi-service-heroku.git
