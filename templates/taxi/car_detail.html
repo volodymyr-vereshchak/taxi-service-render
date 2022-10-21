@@ -4,7 +4,7 @@
   <div class="detail-size">
     <div class="main-detail">
       <div class="img-list">
-        <a href=""><img src="{{ MEDIA_URL }}{{ car.picture_url }}" alt=""></a>
+        <a href=""><img src="{{ car.picture_url.url }}" alt=""></a>
       </div>
       <div class="mrg-10">
         <p class="text text-center mrg-10">Model: {{ car.model }}</p>
@@ -26,7 +26,7 @@
     {% for driver in car.drivers.all %}
       <div class="main-detail">
         <div class="img-list">
-          <a href="{{ driver.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ driver.picture_url }}" alt=""></a>
+          <a href="{{ driver.get_absolute_url }}"><img src="{{ driver.picture_url.url }}" alt=""></a>
         </div>
         <div class="mrg-10">
           <p class="text text-center mrg-10">Username: {{ driver.username }}</p>

@@ -10,7 +10,7 @@
     <div class="main main-lists">
       {% for car in car_list %}
         <div class="img-list">
-              <a href="{% url "taxi:car-detail" pk=car.id %}"><img src="{{ MEDIA_URL }}{{ car.picture_url }}" alt=""></a>
+              <a href="{% url "taxi:car-detail" pk=car.id %}"><img src="{{ car.picture_url.url }}" alt=""></a>
               <p class="text-center"><a href="{% url "taxi:car-detail" pk=car.id %}" class="text menu__link">{{ car.model }}</a></p>
             </div>
       {% endfor %}

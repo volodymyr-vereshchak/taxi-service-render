@@ -10,7 +10,7 @@
     <div class="main-lists">
       {% for driver in driver_list %}
         <div class="img-list">
-          <a href="{{ driver.get_absolute_url }}"><img src="{{ MEDIA_URL }}{{ driver.picture_url }}" alt=""></a>
+          <a href="{{ driver.get_absolute_url }}"><img src="{{ driver.picture_url.url }}" alt=""></a>
           <p class="text-center"><a href="{{ driver.get_absolute_url }}" class="text menu__link">{{ driver.first_name }} {{ driver.last_name }} {% if user == driver %} (Me){% endif %}</a></p>
         </div>
       {% endfor %}
