@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "crispy_forms",
     "taxi",
+    "django_dropbox_storage",
 ]
 
 MIDDLEWARE = [
@@ -155,7 +156,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_OAUTH2_TOKEN")
 DROPBOX_ROOT_PATH = "/"
 
