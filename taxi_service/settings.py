@@ -145,8 +145,8 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media/"
+MEDIA_URL = "/taxi-media/"
+MEDIA_ROOT = BASE_DIR / "taxi-media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -158,5 +158,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 DROPBOX_OAUTH2_TOKEN = os.environ.get("DROPBOX_OAUTH2_TOKEN")
-DROPBOX_ROOT_PATH = "/media/"
+DROPBOX_ROOT_PATH = "/"
 
