@@ -1,7 +1,7 @@
 from parameterized import parameterized
 from django.test import TestCase
 
-from taxi.forms import DriverCreationForm, SearchForm
+from taxi.forms import DriverCreationForm, SearchForm, DriverLicenseUpdateForm
 
 
 class TestDriverCreationForm(TestCase):
@@ -58,7 +58,7 @@ class TestDriverCreationForm(TestCase):
         ]
     )
     def test_validate_license(self, name, form_data, expected_bool):
-        form = DriverCreationForm(data=form_data)
+        form = DriverLicenseUpdateForm(data=form_data)
         self.assertEqual(form.is_valid(), expected_bool)
 
 

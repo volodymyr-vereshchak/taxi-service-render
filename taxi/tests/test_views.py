@@ -6,7 +6,7 @@ from taxi.models import Driver, Car, Manufacturer
 
 class PublicTestIndexView(TestCase):
     def test_login_required(self):
-        response = self.client.get("")
+        response = self.client.get(reverse("taxi:car-list"))
         self.assertNotEqual(response.status_code, 200)
 
 
@@ -18,7 +18,7 @@ class PrivateTestIndexView(TestCase):
         self.client.force_login(self.user_test)
 
     def test_login_required(self):
-        response = self.client.get("")
+        response = self.client.get(reverse("taxi:car-list"))
         self.assertEqual(response.status_code, 200)
 
     def test_num_visits(self):
@@ -37,7 +37,7 @@ class TestCarView(TestCase):
             name="test_name", country="test_country"
         )
         for i in range(num_of_car):
-            Car.objects.create(model=f"test_model {i}", manufacturer=manufacturer)
+            Car.objects.create(model=f"test_model {i}", manufacturer=manufacturer, picture_url="Test")
 
     def setUp(self) -> None:
         self.user_test = Driver.objects.create(
@@ -46,11 +46,11 @@ class TestCarView(TestCase):
         self.client.force_login(self.user_test)
 
     def test_car_pagination(self):
-        response = self.client.get(reverse("taxi:car-list") + "?page=5")
+        response = self.client.get(reverse("taxi:car-list") + "?page=4")
         self.assertEqual(response.status_code, 200)
         self.assertTrue("is_paginated" in response.context)
         self.assertEqual(response.context["is_paginated"], True)
-        self.assertEqual(len(response.context["car_list"]), 2)
+        self.assertEqual(len(response.context["car_list"]), 4)
 
     def test_car_detail_view_assign_delete(self):
         self.client.get(reverse("taxi:toggle-car-assign", kwargs={"pk": 1}))
