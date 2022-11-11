@@ -24,11 +24,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = "django-insecure-8ovil3xu6=eaoqd#-#&ricv159p0pypoh5_lgm*)-dfcjqe=yc"
 
-SECRET_KEY = "DJANGO_SECRET_KEY" not in os.environ
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don"t run with debug turned on in production!
 # DEBUG = True
-DEBUG = bool(os.environ.get("DJANGO_DEBUG", True))
+DEBUG = "DJANGO_DEBUG" not in os.environ
 
 ALLOWED_HOSTS = ["127.0.0.1", "taxi-service.onrender.com"]
 
