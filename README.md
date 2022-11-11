@@ -18,6 +18,6 @@ python manage.py runserver
 ```
 
 ## Links
-- Project homepage: https://taxi-servise-1985.herokuapp.com/
+- Project homepage: https://taxi-service.onrender.com
 - Login: `mick_schumacher`
 - Password: `1qazcde3`
