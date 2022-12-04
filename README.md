@@ -1,6 +1,6 @@
 # Taxi service deploy project
 
-Deploying taxi service project on Heroku
+Deploying taxi service project on Render
 
 ![img.png](img.png)
 
