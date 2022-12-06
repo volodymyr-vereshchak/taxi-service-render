@@ -30,7 +30,7 @@ SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 # DEBUG = True
 DEBUG = "DJANGO_DEBUG" not in os.environ
 
-ALLOWED_HOSTS = ["127.0.0.1", "taxi-service.onrender.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "render-taxi.onrender.com"]
 
 INTERNAL_IPS = [
     "127.0.0.1",
